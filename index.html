@@ -979,7 +979,7 @@
             document.getElementById('modal-area').innerText = p.area;
             document.getElementById('modal-desc').innerText = p.desc;
             
-            const featuresHTML = p.features.map(f => `<li class="flex items-center"><i data-lucide="check" class="w-3 h-3 text-gold mr-2"></i>${f}</li>`).join('');
+            const featuresHTML = (p.features || []).map(f => `<li class="flex items-center"><i data-lucide="check" class="w-3 h-3 text-gold mr-2"></i>${f}</li>`).join('');
             document.getElementById('modal-features').innerHTML = featuresHTML;
             
             const message = encodeURIComponent(`Hello AAHIL PROPERTY, I am interested in "${p.title}" located at ${p.location} priced at ${p.price}. Please provide more details.`);
