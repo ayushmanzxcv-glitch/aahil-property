@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO Meta Tags -->
+    <title>AAHIL PROPERTY | Real Estate Consultant in Bilaspur</title>
+    <meta name="description" content="AAHIL PROPERTY is a real estate consultant in Bilaspur offering assistance for residential properties, commercial properties, plots, buying, selling, rentals and property investment opportunities.">
+    <meta name="keywords" content="Real Estate Consultant in Bilaspur, Property Dealer in Bilaspur, Property Consultant Bilaspur, Properties for Sale in Bilaspur, Plots for Sale in Bilaspur, Commercial Property in Bilaspur">
+    <meta name="author" content="AAHIL PROPERTY">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AAHIL PROPERTY | Real Estate Consultant in Bilaspur">
+    <meta property="og:description" content="AAHIL PROPERTY helps you find the right residential, commercial, and investment properties in Bilaspur.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0a0a',
+                        charcoal: '#1a1a1a',
+                        light: '#fdfbf7',
+                        gold: '#d4af37',
+                        goldHover: '#b5952f'
+                    },
+                    fontFamily: {
+                        heading: ['Cinzel', 'serif'],
+                        body: ['Manrope', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styles & Lenis Setup */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+        :root {
+            --gold: #d4af37;
+            --dark: #0a0a0a;
+            --light: #fdfbf7;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--gold);
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: bold;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+        @media (max-width: 1024px) {
+            body { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background-color: var(--dark);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .loader-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            letter-spacing: 0.2em;
+            overflow: hidden;
+        }
+        .loader-text span {
+            display: inline-block;
+            transform: translateY(100%);
+        }
+        .loader-progress {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: var(--gold);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Typography Reveal Utilities */
+        .reveal-wrap { overflow: hidden; display: inline-block; vertical-align: top; }
+        .reveal-text { display: inline-block; transform: translateY(110%); }
+
+        /* Navigation */
+        nav { transition: all 0.4s ease; }
+        nav.scrolled {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Buttons & Hover Effects */
+        .btn-gold {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            transition: color 0.4s ease;
+        }
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background-color: var(--gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        .btn-gold:hover { color: var(--dark); }
+        .btn-gold:hover::before { left: 0; }
+
+        .btn-solid-gold {
+            background-color: var(--gold);
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        .btn-solid-gold:hover {
+            background-color: var(--light);
+            transform: scale(1.05);
+        }
+
+        /* Image Hover Zoom */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom-container img { transition: transform 0.7s ease; }
+        .img-zoom-container:hover img { transform: scale(1.05); }
+
+        /* Horizontal Scroll Section */
+        .horizontal-scroll-wrapper {
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .horizontal-container {
+            display: flex;
+            width: 300vw; /* 3 sections */
+            height: 80vh;
+        }
+        .horizontal-panel {
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5vw;
+        }
+        @media (max-width: 768px) {
+            .horizontal-scroll-wrapper { height: auto; display: block; }
+            .horizontal-container { width: 100%; height: auto; flex-direction: column; }
+            .horizontal-panel { width: 100%; height: auto; padding: 4rem 1rem; }
+        }
+
+        /* Property Cards */
+        .property-card {
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        /* Filter Buttons */
+        .filter-btn.active {
+            background-color: var(--gold);
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+
+        /* Connecting Line Process */
+        .process-line-wrap { position: relative; }
+        .process-line {
+            position: absolute;
+            top: 24px; left: 0;
+            width: 0%; height: 2px;
+            background: var(--gold);
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .process-line { width: 2px; height: 0%; top: 0; left: 24px; }
+        }
+
+        /* Floating Elements */
+        .floating-whatsapp {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Modal styling */
+        #property-modal {
+            backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.95);
+        }
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-content::-webkit-scrollbar { width: 6px; }
+        .modal-content::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+        /* Hide scrollbar globally for standard viewing */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+    </style>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "AAHIL PROPERTY",
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1200",
+      "@id": "",
+      "url": "",
+      "telephone": "+919300999990",
+      "email": "sadik99999@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Old Busstand",
+        "addressLocality": "Bilaspur",
+        "addressRegion": "Chhattisgarh",
+        "postalCode": "495001",
+        "addressCountry": "IN"
+      },
+      "description": "Premium real estate consultant in Bilaspur offering services in residential, commercial, and investment properties."
+    }
+    </script>
+</head>
+<body class="antialiased selection:bg-gold selection:text-dark">
+
+    <!-- Custom Cursor (Desktop) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-text font-heading">
+            <span class="inline-block">A</span><span class="inline-block">A</span><span class="inline-block">H</span><span class="inline-block">I</span><span class="inline-block">L</span>
+            &nbsp;
+            <span class="inline-block">P</span><span class="inline-block">R</span><span class="inline-block">O</span><span class="inline-block">P</span><span class="inline-block">E</span><span class="inline-block">R</span><span class="inline-block">T</span><span class="inline-block">Y</span>
+        </div>
+        <div class="loader-progress" id="loader-progress">0%</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 py-6 transition-all duration-500 hover-target">
+        <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center">
+            <a href="#" class="text-2xl font-heading font-bold tracking-widest text-light hover:text-gold transition-colors z-50">
+                AAHIL <span class="font-light">PROPERTY</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="hover:text-gold transition-colors relative group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span></a>
+                <a href="#about" class="hover:text-gold transition-colors relative group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span></a>
+                <a href="#services" class="hover:text-gold transition-colors relative group">Services<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span></a>
+                <a href="#properties" class="hover:text-gold transition-colors relative group">Properties<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span></a>
+                <a href="#why-us" class="hover:text-gold transition-colors relative group">Why Us<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span></a>
+                <a href="#contact" class="hover:text-gold transition-colors relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all group-hover:w-full"></span></a>
+                <a href="#contact" class="btn-solid-gold px-6 py-3 rounded-none font-bold tracking-wider text-xs">FIND PROPERTY</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-light z-50 focus:outline-none">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-dark z-40 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-center items-center space-y-8">
+        <a href="#home" class="mobile-link text-3xl font-heading hover:text-gold">Home</a>
+        <a href="#about" class="mobile-link text-3xl font-heading hover:text-gold">About</a>
+        <a href="#services" class="mobile-link text-3xl font-heading hover:text-gold">Services</a>
+        <a href="#properties" class="mobile-link text-3xl font-heading hover:text-gold">Properties</a>
+        <a href="#why-us" class="mobile-link text-3xl font-heading hover:text-gold">Why Us</a>
+        <a href="#contact" class="mobile-link text-3xl font-heading hover:text-gold">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        <!-- Parallax Background -->
+        <div class="hero-bg absolute inset-0 w-full h-[120%] -top-[10%] z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-dark z-10"></div>
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=2000" alt="Luxury Real Estate Bilaspur" class="w-full h-full object-cover">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center mt-20">
+            <div class="reveal-wrap mb-4">
+                <p class="hero-text reveal-text text-gold tracking-[0.3em] text-sm md:text-base font-semibold uppercase">Your Trusted Real Estate Consultant in Bilaspur</p>
+            </div>
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+                <div class="reveal-wrap"><span class="hero-title reveal-text block">Find The Property</span></div>
+                <div class="reveal-wrap"><span class="hero-title reveal-text block">You <span class="text-gold italic font-light">Deserve.</span></span></div>
+            </h1>
+            <div class="reveal-wrap mb-10 max-w-2xl mx-auto">
+                <p class="hero-desc reveal-text text-gray-300 text-lg font-light leading-relaxed">
+                    Discover residential, commercial and investment opportunities with professional local property guidance.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 hero-buttons opacity-0">
+                <a href="#properties" class="btn-solid-gold px-8 py-4 w-full sm:w-auto text-sm font-bold tracking-widest hover-target">EXPLORE PROPERTIES</a>
+                <a href="#contact" class="btn-gold px-8 py-4 w-full sm:w-auto text-sm font-bold tracking-widest hover-target">CONTACT US</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center opacity-70">
+            <span class="text-xs tracking-widest mb-2 font-light">SCROLL</span>
+            <div class="w-[1px] h-16 bg-white/30 relative overflow-hidden">
+                <div class="w-full h-1/2 bg-white absolute top-0 animate-[scrollDown_2s_ease-in-out_infinite]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinematic Introduction -->
+    <section class="py-32 bg-dark relative z-20 text-center px-6">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-5xl lg:text-7xl font-heading leading-tight intro-text-container">
+                <div class="reveal-wrap mb-2"><span class="intro-line reveal-text block text-gray-500">Finding a property is easy.</span></div>
+                <div class="reveal-wrap mb-4"><span class="intro-line reveal-text block">Finding the right property</span></div>
+                <div class="reveal-wrap mb-8"><span class="intro-line reveal-text block text-gold italic">requires the right guidance.</span></div>
+                <div class="reveal-wrap mt-12"><span class="intro-line reveal-text block text-2xl md:text-4xl">Welcome to <br/>AAHIL PROPERTY.</span></div>
+            </h2>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-charcoal relative overflow-hidden">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="img-zoom-container relative h-[600px] w-full rounded-sm overflow-hidden about-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000" alt="About Aahil Property" class="w-full h-full object-cover about-img">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                </div>
+                <div class="about-content">
+                    <p class="text-gold tracking-[0.2em] text-sm font-semibold mb-4 uppercase">About Us</p>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-8 leading-tight">Elevating Real Estate in <span class="text-gold">Bilaspur</span></h2>
+                    <p class="text-gray-300 text-lg font-light leading-relaxed mb-6">
+                        AAHIL PROPERTY is your trusted real estate consultant in Bilaspur, helping clients discover suitable residential, commercial and investment properties. 
+                    </p>
+                    <p class="text-gray-400 text-base font-light leading-relaxed mb-10">
+                        We focus on understanding your requirements and connecting you with the right property opportunities while providing professional guidance throughout the entire process, ensuring a seamless and transparent experience.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mb-10 border-t border-white/10 pt-8">
+                        <div>
+                            <h4 class="text-3xl font-heading font-bold text-gold mb-2 counter" data-target="5">0</h4>
+                            <p class="text-sm text-gray-400 uppercase tracking-wider">Years Experience</p>
+                        </div>
+                        <div>
+                            <h4 class="text-3xl font-heading font-bold text-gold mb-2 counter" data-target="100">0</h4>
+                            <p class="text-sm text-gray-400 uppercase tracking-wider">Properties Listed</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center space-x-2 text-light hover:text-gold transition-colors hover-target group">
+                        <span class="font-bold tracking-widest text-sm">KNOW MORE</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 transform group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services (Horizontal Scroll on Desktop) -->
+    <section id="services" class="bg-dark">
+        <div class="horizontal-scroll-wrapper">
+            <div class="horizontal-container">
+                <!-- Panel 1 -->
+                <div class="horizontal-panel flex-col md:flex-row gap-12">
+                    <div class="w-full md:w-1/2">
+                        <h2 class="text-gold tracking-[0.2em] text-sm font-semibold mb-4 uppercase">Our Expertise</h2>
+                        <h3 class="text-5xl md:text-7xl font-heading font-bold mb-6">Residential &<br><span class="italic font-light text-gray-400">Commercial</span></h3>
+                        <p class="text-gray-400 max-w-md text-lg font-light">Whether you seek a luxury home, a modern apartment, or a prime commercial space for your business, we guide you to the perfect location.</p>
+                    </div>
+                    <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-charcoal p-8 border border-white/5 hover:border-gold/30 transition-colors">
+                            <i data-lucide="home" class="w-10 h-10 text-gold mb-6"></i>
+                            <h4 class="text-xl font-heading mb-2">Residential Properties</h4>
+                            <p class="text-sm text-gray-500">Villas, apartments, and family homes tailored to your lifestyle.</p>
+                        </div>
+                        <div class="bg-charcoal p-8 border border-white/5 hover:border-gold/30 transition-colors">
+                            <i data-lucide="building-2" class="w-10 h-10 text-gold mb-6"></i>
+                            <h4 class="text-xl font-heading mb-2">Commercial Properties</h4>
+                            <p class="text-sm text-gray-500">Offices, retail spaces, and industrial plots for business growth.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 2 -->
+                <div class="horizontal-panel flex-col md:flex-row gap-12">
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-5xl md:text-7xl font-heading font-bold mb-6">Land &<br><span class="italic font-light text-gray-400">Investment</span></h3>
+                        <p class="text-gray-400 max-w-md text-lg font-light">Secure your future with premium plots and strategic real estate investments backed by local market intelligence.</p>
+                    </div>
+                    <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-charcoal p-8 border border-white/5 hover:border-gold/30 transition-colors">
+                            <i data-lucide="map" class="w-10 h-10 text-gold mb-6"></i>
+                            <h4 class="text-xl font-heading mb-2">Plots & Land</h4>
+                            <p class="text-sm text-gray-500">Residential and commercial plots in prime developing areas.</p>
+                        </div>
+                        <div class="bg-charcoal p-8 border border-white/5 hover:border-gold/30 transition-colors">
+                            <i data-lucide="trending-up" class="w-10 h-10 text-gold mb-6"></i>
+                            <h4 class="text-xl font-heading mb-2">Investment Guidance</h4>
+                            <p class="text-sm text-gray-500">Expert advice to maximize ROI on your real estate portfolio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3 -->
+                <div class="horizontal-panel flex-col md:flex-row gap-12">
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-5xl md:text-7xl font-heading font-bold mb-6">Buying, Selling &<br><span class="italic font-light text-gray-400">Rentals</span></h3>
+                        <p class="text-gray-400 max-w-md text-lg font-light">Comprehensive end-to-end assistance ensuring smooth transactions, transparent paperwork, and optimal value.</p>
+                    </div>
+                    <div class="w-full md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-charcoal p-8 border border-white/5 hover:border-gold/30 transition-colors">
+                            <i data-lucide="key" class="w-10 h-10 text-gold mb-6"></i>
+                            <h4 class="text-xl font-heading mb-2">Buying / Selling</h4>
+                            <p class="text-sm text-gray-500">Professional valuation, marketing, and negotiation support.</p>
+                        </div>
+                        <div class="bg-charcoal p-8 border border-white/5 hover:border-gold/30 transition-colors">
+                            <i data-lucide="door-open" class="w-10 h-10 text-gold mb-6"></i>
+                            <h4 class="text-xl font-heading mb-2">Rental Properties</h4>
+                            <p class="text-sm text-gray-500">Find the perfect rental or lease out your property efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Search / Filters Section -->
+    <section id="properties" class="py-24 bg-charcoal relative">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <p class="text-gold tracking-[0.2em] text-sm font-semibold mb-2 uppercase">Portfolio</p>
+                    <h2 class="text-4xl md:text-5xl font-heading font-bold">Featured Properties</h2>
+                </div>
+                
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="property-filters">
+                    <button class="filter-btn active border border-white/20 px-4 py-2 text-sm rounded-full transition-all hover:border-gold" data-filter="all">All</button>
+                    <button class="filter-btn border border-white/20 px-4 py-2 text-sm rounded-full transition-all hover:border-gold" data-filter="residential">Residential</button>
+                    <button class="filter-btn border border-white/20 px-4 py-2 text-sm rounded-full transition-all hover:border-gold" data-filter="commercial">Commercial</button>
+                    <button class="filter-btn border border-white/20 px-4 py-2 text-sm rounded-full transition-all hover:border-gold" data-filter="plot">Plots</button>
+                    <button class="filter-btn border border-white/20 px-4 py-2 text-sm rounded-full transition-all hover:border-gold" data-filter="sale">For Sale</button>
+                    <button class="filter-btn border border-white/20 px-4 py-2 text-sm rounded-full transition-all hover:border-gold" data-filter="rent">For Rent</button>
+                </div>
+            </div>
+
+            <!-- Property Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="property-grid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="py-24 bg-dark">
+        <div class="container mx-auto px-6 lg:px-12 text-center mb-16">
+            <p class="text-gold tracking-[0.2em] text-sm font-semibold mb-2 uppercase">The Process</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold">How We Work</h2>
+        </div>
+        <div class="container mx-auto px-6 lg:px-12 max-w-5xl">
+            <div class="relative process-line-wrap">
+                <!-- The animated line -->
+                <div class="process-line" id="process-line"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10 process-steps">
+                    <!-- Step 1 -->
+                    <div class="text-center md:text-left bg-dark md:bg-transparent">
+                        <div class="w-12 h-12 rounded-full bg-charcoal border-2 border-gold flex items-center justify-center text-gold font-heading font-bold text-xl mx-auto md:mx-0 mb-6">01</div>
+                        <h4 class="text-xl font-bold mb-3">Tell Us Your Requirement</h4>
+                        <p class="text-gray-400 text-sm font-light">Share your preferences, budget, and location needs with our team.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="text-center md:text-left bg-dark md:bg-transparent">
+                        <div class="w-12 h-12 rounded-full bg-charcoal border-2 border-white/20 flex items-center justify-center text-white/50 font-heading font-bold text-xl mx-auto md:mx-0 mb-6 step-circle">02</div>
+                        <h4 class="text-xl font-bold mb-3">Explore Properties</h4>
+                        <p class="text-gray-400 text-sm font-light">We curate a tailored list of properties matching your exact criteria.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="text-center md:text-left bg-dark md:bg-transparent">
+                        <div class="w-12 h-12 rounded-full bg-charcoal border-2 border-white/20 flex items-center justify-center text-white/50 font-heading font-bold text-xl mx-auto md:mx-0 mb-6 step-circle">03</div>
+                        <h4 class="text-xl font-bold mb-3">Visit & Consult</h4>
+                        <p class="text-gray-400 text-sm font-light">Guided site visits with expert advice on pricing and potential.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="text-center md:text-left bg-dark md:bg-transparent">
+                        <div class="w-12 h-12 rounded-full bg-charcoal border-2 border-white/20 flex items-center justify-center text-white/50 font-heading font-bold text-xl mx-auto md:mx-0 mb-6 step-circle">04</div>
+                        <h4 class="text-xl font-bold mb-3">Finalize Property</h4>
+                        <p class="text-gray-400 text-sm font-light">Seamless assistance with negotiation, paperwork, and closing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bilaspur SEO Section / Why Us -->
+    <section id="why-us" class="py-24 bg-charcoal relative overflow-hidden">
+        <!-- Abstract Background Shape -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl md:text-6xl font-heading font-bold mb-6 leading-tight">Your Local Property Partner in <span class="text-gold italic">Bilaspur.</span></h2>
+                <p class="text-gray-300 text-lg font-light leading-relaxed mb-8">
+                    From residential homes and plots to commercial and investment opportunities, AAHIL PROPERTY helps you explore suitable real estate options across Bilaspur. Our deep local market knowledge ensures you make informed decisions.
+                </p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-gold mt-1 mr-4 shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-lg">Trusted Property Consultation</h4>
+                            <p class="text-sm text-gray-400 mt-1">Honest advice prioritizing your long-term benefits.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-gold mt-1 mr-4 shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-lg">Local Bilaspur Market Knowledge</h4>
+                            <p class="text-sm text-gray-400 mt-1">Insights into emerging areas and pricing trends.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-lucide="check-circle" class="w-6 h-6 text-gold mt-1 mr-4 shrink-0"></i>
+                        <div>
+                            <h4 class="font-bold text-lg">Transparent Communication</h4>
+                            <p class="text-sm text-gray-400 mt-1">No hidden details, seamless support from start to finish.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-4 pt-12">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=600" alt="Home in Bilaspur" class="w-full h-64 object-cover rounded-sm shadow-2xl hover:scale-105 transition-transform duration-500">
+                    <div class="bg-dark p-6 rounded-sm border border-white/5 text-center">
+                        <h4 class="text-3xl font-heading font-bold text-gold mb-1 counter" data-target="50">0</h4>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest">+ Happy Clients</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-gold text-dark p-6 rounded-sm text-center">
+                        <h4 class="text-3xl font-heading font-bold mb-1 counter" data-target="30">0</h4>
+                        <p class="text-xs uppercase tracking-widest font-bold">+ Deals Closed</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600" alt="Commercial Property Bilaspur" class="w-full h-80 object-cover rounded-sm shadow-2xl hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="py-24 bg-dark">
+        <div class="container mx-auto px-6 lg:px-12 text-center">
+            <p class="text-gold tracking-[0.2em] text-sm font-semibold mb-2 uppercase">Testimonials</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold mb-16">Client Experiences</h2>
+            
+            <div class="max-w-4xl mx-auto relative overflow-hidden">
+                <div class="flex transition-transform duration-700 ease-in-out" id="testimonial-slider">
+                    <!-- Slide 1 -->
+                    <div class="w-full shrink-0 px-4">
+                        <i data-lucide="quote" class="w-12 h-12 mx-auto text-white/10 mb-6"></i>
+                        <p class="text-xl md:text-2xl font-light italic text-gray-300 mb-8 leading-relaxed">
+                            "AAHIL PROPERTY made finding a commercial space in Bilaspur effortless. Their professional approach and local market knowledge saved us time and money. Highly recommended."
+                        </p>
+                        <h4 class="font-bold text-gold uppercase tracking-wider text-sm">Rajesh Kumar</h4>
+                        <p class="text-xs text-gray-500 mt-1">Business Owner</p>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="w-full shrink-0 px-4">
+                        <i data-lucide="quote" class="w-12 h-12 mx-auto text-white/10 mb-6"></i>
+                        <p class="text-xl md:text-2xl font-light italic text-gray-300 mb-8 leading-relaxed">
+                            "We bought our family home through them. Sadik was extremely transparent and understood exactly what we needed. A premium service in every aspect."
+                        </p>
+                        <h4 class="font-bold text-gold uppercase tracking-wider text-sm">Priya Sharma</h4>
+                        <p class="text-xs text-gray-500 mt-1">Homebuyer</p>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="w-full shrink-0 px-4">
+                        <i data-lucide="quote" class="w-12 h-12 mx-auto text-white/10 mb-6"></i>
+                        <p class="text-xl md:text-2xl font-light italic text-gray-300 mb-8 leading-relaxed">
+                            "Excellent guidance for real estate investment. They helped me identify a high-growth plot. The entire transaction was smooth and professional."
+                        </p>
+                        <h4 class="font-bold text-gold uppercase tracking-wider text-sm">Amit Verma</h4>
+                        <p class="text-xs text-gray-500 mt-1">Investor</p>
+                    </div>
+                </div>
+                
+                <!-- Controls -->
+                <div class="flex justify-center space-x-4 mt-8">
+                    <button class="w-3 h-3 rounded-full bg-gold slider-dot" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/20 hover:bg-white/50 slider-dot transition-colors" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/20 hover:bg-white/50 slider-dot transition-colors" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Contact Section -->
+    <section id="contact" class="bg-charcoal relative border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Left: Form & Info -->
+            <div class="p-8 md:p-16 lg:p-24">
+                <h2 class="text-4xl font-heading font-bold mb-4">Looking for the Right Property in Bilaspur?</h2>
+                <p class="text-gray-400 mb-10">Tell us your requirement and let AAHIL PROPERTY help you explore suitable opportunities.</p>
+                
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <input type="text" id="form-name" placeholder="Full Name" required class="w-full bg-dark border border-white/10 p-4 rounded-none focus:outline-none focus:border-gold transition-colors text-sm">
+                        <input type="tel" id="form-phone" placeholder="Phone Number" required class="w-full bg-dark border border-white/10 p-4 rounded-none focus:outline-none focus:border-gold transition-colors text-sm">
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <select id="form-type" class="w-full bg-dark border border-white/10 p-4 rounded-none focus:outline-none focus:border-gold transition-colors text-sm text-gray-400 appearance-none">
+                            <option value="" disabled selected>Property Requirement</option>
+                            <option value="Residential Buy">Residential - Buy</option>
+                            <option value="Residential Rent">Residential - Rent</option>
+                            <option value="Commercial Buy">Commercial - Buy</option>
+                            <option value="Commercial Rent">Commercial - Rent</option>
+                            <option value="Plot/Land">Plot / Land</option>
+                            <option value="Investment">Investment</option>
+                        </select>
+                        <input type="text" id="form-budget" placeholder="Estimated Budget" class="w-full bg-dark border border-white/10 p-4 rounded-none focus:outline-none focus:border-gold transition-colors text-sm">
+                    </div>
+                    <textarea id="form-message" rows="4" placeholder="Message or Preferred Location" class="w-full bg-dark border border-white/10 p-4 rounded-none focus:outline-none focus:border-gold transition-colors text-sm"></textarea>
+                    
+                    <button type="submit" class="btn-solid-gold w-full py-4 text-sm font-bold tracking-widest uppercase hover-target">Send Enquiry via WhatsApp</button>
+                </form>
+
+                <div class="mt-16 space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-dark flex items-center justify-center rounded-full border border-white/10">
+                            <i data-lucide="map-pin" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Visit Us</p>
+                            <p class="text-sm">Old Busstand, Bilaspur, Chhattisgarh – 495001, India</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 hover-target">
+                        <div class="w-12 h-12 bg-dark flex items-center justify-center rounded-full border border-white/10">
+                            <i data-lucide="phone" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Call or WhatsApp</p>
+                            <a href="tel:9300999990" class="text-lg font-bold hover:text-gold transition-colors">9300999990</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 hover-target">
+                        <div class="w-12 h-12 bg-dark flex items-center justify-center rounded-full border border-white/10">
+                            <i data-lucide="mail" class="text-gold w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Email Us</p>
+                            <a href="mailto:sadik99999@gmail.com" class="text-sm hover:text-gold transition-colors">sadik99999@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right: Map -->
+            <div class="h-[500px] lg:h-auto w-full grayscale contrast-125 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118274.65451999201!2d82.0833987!3d22.0796366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a280b18f0f8a8ad%3A0x86bd7b3701df92!2sOld%20Bus%20Stand%2C%20Bilaspur%2C%20Chhattisgarh%20495001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-12 border-t border-white/10">
+        <div class="container mx-auto px-6 lg:px-12 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-heading font-bold tracking-widest text-light">
+                        AAHIL <span class="font-light">PROPERTY</span>
+                    </a>
+                    <p class="text-gray-500 text-sm mt-2 max-w-sm mx-auto md:mx-0">Professional real estate consultation and property assistance in Bilaspur.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-sm text-gray-400 hover:text-gold transition-colors">Home</a>
+                    <a href="#services" class="text-sm text-gray-400 hover:text-gold transition-colors">Services</a>
+                    <a href="#properties" class="text-sm text-gray-400 hover:text-gold transition-colors">Properties</a>
+                    <a href="#contact" class="text-sm text-gray-400 hover:text-gold transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2026 AAHIL PROPERTY. All Rights Reserved.</p>
+                <button id="back-to-top" class="mt-4 md:mt-0 flex items-center space-x-2 hover:text-gold transition-colors hover-target focus:outline-none">
+                    <span>BACK TO TOP</span>
+                    <i data-lucide="arrow-up" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919300999990?text=Hello%20AAHIL%20PROPERTY,%20I%20am%20interested%20in%20discussing%20a%20property%20requirement%20in%20Bilaspur." target="_blank" class="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl z-40 hover:scale-110 transition-transform floating-whatsapp hover-target hidden md:flex">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <!-- Sticky Mobile Contact Bar -->
+    <div class="fixed bottom-0 left-0 w-full bg-dark border-t border-white/10 z-40 flex md:hidden">
+        <a href="tel:9300999990" class="flex-1 py-4 text-center border-r border-white/10 flex items-center justify-center space-x-2 text-sm text-light">
+            <i data-lucide="phone" class="w-4 h-4 text-gold"></i><span>Call</span>
+        </a>
+        <a href="https://wa.me/919300999990?text=Hello%20AAHIL%20PROPERTY,%20I%20am%20interested%20in%20discussing%20a%20property%20requirement%20in%20Bilaspur." class="flex-1 py-4 text-center border-r border-white/10 flex items-center justify-center space-x-2 text-sm text-[#25D366]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg><span>WhatsApp</span>
+        </a>
+        <a href="#contact" class="flex-1 py-4 text-center flex items-center justify-center space-x-2 text-sm text-dark bg-gold font-bold">
+            <i data-lucide="mail" class="w-4 h-4 text-dark"></i><span>Enquiry</span>
+        </a>
+    </div>
+
+    <!-- Property Details Modal -->
+    <div id="property-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-10 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/80" onclick="closeModal()"></div>
+        <div class="modal-content relative bg-charcoal w-full max-w-5xl rounded-sm border border-white/10 shadow-2xl flex flex-col md:flex-row transform scale-95 transition-transform duration-300 z-10 h-auto max-h-full">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-dark/50 p-2 rounded-full text-white hover:text-gold z-20 backdrop-blur-sm">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="w-full md:w-1/2 h-64 md:h-auto">
+                <img id="modal-img" src="" alt="Property" class="w-full h-full object-cover">
+            </div>
+            <div class="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto">
+                <span id="modal-type" class="text-gold text-xs font-bold tracking-widest uppercase mb-2 block"></span>
+                <h3 id="modal-title" class="text-3xl font-heading font-bold mb-2"></h3>
+                <p id="modal-location" class="text-gray-400 text-sm flex items-center mb-6">
+                    <i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gold"></i> <span></span>
+                </p>
+                
+                <div class="flex items-center space-x-6 mb-6 pb-6 border-b border-white/10">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Price</p>
+                        <p id="modal-price" class="text-xl font-bold text-gold"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase">Area</p>
+                        <p id="modal-area" class="text-lg font-bold"></p>
+                    </div>
+                </div>
+                
+                <p id="modal-desc" class="text-gray-300 text-sm leading-relaxed mb-8 font-light"></p>
+                
+                <div class="mb-8">
+                    <h4 class="text-sm font-bold uppercase tracking-wider mb-3">Key Features</h4>
+                    <ul id="modal-features" class="grid grid-cols-2 gap-2 text-sm text-gray-400">
+                        <!-- Populated via JS -->
+                    </ul>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a id="modal-whatsapp-btn" href="#" target="_blank" class="flex-1 bg-[#25D366] text-white py-3 px-4 rounded-sm flex items-center justify-center space-x-2 hover:bg-[#1ebd5a] transition-colors font-bold text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg> <span>WhatsApp Enquiry</span>
+                    </a>
+                    <a href="tel:9300999990" class="flex-1 btn-gold py-3 px-4 rounded-sm flex items-center justify-center space-x-2 font-bold text-sm">
+                        <i data-lucide="phone" class="w-4 h-4"></i> <span>Call Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Data: Demo Properties
+        const properties = [
+            { id: 1, title: "The Royal Residency", location: "Vyapar Vihar, Bilaspur", type: "Residential", category: "residential", status: "sale", price: "₹ 1.25 Cr", area: "2400 sq.ft", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800", desc: "A premium 4BHK luxury villa offering modern amenities, a private garden, and top-tier security in the heart of the city.", features: ["4 Bedrooms", "Modular Kitchen", "Private Garden", "24/7 Security"] },
+            { id: 2, title: "Prime Commercial Hub", location: "Mangla Chowk, Bilaspur", type: "Commercial", category: "commercial", status: "rent", price: "₹ 45,000 / mo", area: "1200 sq.ft", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800", desc: "Ready-to-move office space in a high-footfall area. Ideal for corporate offices, IT setups, or premium retail.", features: ["Main Road Facing", "Ample Parking", "Glass Facade", "Power Backup"] },
+            { id: 3, title: "Sunrise Premium Plots", location: "Sakri, Bilaspur", type: "Plot", category: "plot", status: "sale", price: "₹ 35 Lakhs", area: "1500 sq.ft", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800", desc: "Corner plot in a rapidly developing township. Perfect for building your dream home or for long-term investment.", features: ["Corner Plot", "Wide Roads", "Park Facing", "Clear Title"] },
+            { id: 4, title: "Skyline Apartments", location: "Rajkishore Nagar, Bilaspur", type: "Residential", category: "residential", status: "sale", price: "₹ 65 Lakhs", area: "1350 sq.ft", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800", desc: "Beautifully designed 3BHK apartment with panoramic city views, club house access, and premium fittings.", features: ["3 Bedrooms", "Club House", "Swimming Pool", "Covered Parking"] },
+            { id: 5, title: "Retail Space High Street", location: "Sadar Bazar, Bilaspur", type: "Commercial", category: "commercial", status: "sale", price: "₹ 2.1 Cr", area: "800 sq.ft", img: "https://images.unsplash.com/photo-1582653291997-079a1c04e5a1?auto=format&fit=crop&q=80&w=800", desc: "Ground floor retail space in the busiest market of Bilaspur. Guaranteed high visibility and footfall.", features: ["Ground Floor", "High Footfall", "Front Display", "Immediate Possession"] },
+            { id: 6, title: "Green Valley Homes", location: "Koni, Bilaspur", type: "Residential", category: "residential", status: "rent", price: "₹ 18,000 / mo", area: "1100 sq.ft", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800", desc: "Cozy and well-maintained 2BHK independent house in a peaceful residential neighborhood close to educational institutes.", features: ["2 Bedrooms", "Semi-Furnished", "Peaceful Area", "Terrace Access"] }
+        ];
+
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        if(window.innerWidth > 1024) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                // Slight delay for outline
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 150, fill: "forwards" });
+            });
+
+            // Hover effects
+            const hoverTargets = document.querySelectorAll('.hover-target, a, button');
+            hoverTargets.forEach(target => {
+                target.addEventListener('mouseenter', () => {
+                    cursorOutline.style.width = '80px';
+                    cursorOutline.style.height = '80px';
+                    cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                    if(target.closest('.property-card')) {
+                        cursorOutline.innerHTML = "VIEW";
+                    }
+                });
+                target.addEventListener('mouseleave', () => {
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                    cursorOutline.innerHTML = "";
+                });
+            });
+        }
+
+        // Render Properties
+        const grid = document.getElementById('property-grid');
+        function renderProperties(filter = 'all') {
+            grid.innerHTML = '';
+            const filtered = properties.filter(p => {
+                if(filter === 'all') return true;
+                if(filter === 'sale' || filter === 'rent') return p.status === filter;
+                return p.category === filter;
+            });
+            
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'property-card rounded-sm overflow-hidden flex flex-col group cursor-pointer hover-target';
+                card.onclick = () => openModal(p);
+                card.innerHTML = `
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-dark/80 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold rounded-sm border border-gold/30">${p.status === 'sale' ? 'For Sale' : 'For Rent'}</div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+                            <p class="text-xl font-bold text-white">${p.price}</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <p class="text-gold text-xs font-bold tracking-widest uppercase mb-1">${p.type}</p>
+                        <h3 class="text-xl font-heading font-bold mb-2">${p.title}</h3>
+                        <p class="text-gray-400 text-sm flex items-center mb-4"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> ${p.location}</p>
+                        <div class="mt-auto pt-4 border-t border-white/10 flex justify-between items-center text-sm">
+                            <span class="text-gray-300 font-light">${p.area}</span>
+                            <span class="text-gold font-bold flex items-center group-hover:translate-x-1 transition-transform">VIEW <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+            
+            // Re-bind cursor events for new elements if desktop
+            if(window.innerWidth > 1024) {
+                const newTargets = grid.querySelectorAll('.hover-target');
+                newTargets.forEach(target => {
+                    target.addEventListener('mouseenter', () => {
+                        cursorOutline.style.width = '80px';
+                        cursorOutline.style.height = '80px';
+                        cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                        cursorOutline.innerHTML = "VIEW";
+                    });
+                    target.addEventListener('mouseleave', () => {
+                        cursorOutline.style.width = '40px';
+                        cursorOutline.style.height = '40px';
+                        cursorOutline.style.backgroundColor = 'transparent';
+                        cursorOutline.innerHTML = "";
+                    });
+                });
+            }
+        }
+        
+        renderProperties();
+
+        // Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active', 'border-gold', 'bg-gold', 'text-dark'));
+                filterBtns.forEach(b => b.classList.add('border-white/20', 'text-light'));
+                btn.classList.add('active', 'border-gold', 'bg-gold', 'text-dark');
+                btn.classList.remove('border-white/20', 'text-light');
+                renderProperties(btn.getAttribute('data-filter'));
+            });
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('property-modal');
+        const modalContent = modal.querySelector('.modal-content');
+        function openModal(p) {
+            document.getElementById('modal-img').src = p.img;
+            document.getElementById('modal-type').innerText = p.type + " - " + (p.status === 'sale' ? 'For Sale' : 'For Rent');
+            document.getElementById('modal-title').innerText = p.title;
+            document.getElementById('modal-location').innerHTML = `<i data-lucide="map-pin" class="w-4 h-4 mr-1 text-gold"></i> ${p.location}`;
+            document.getElementById('modal-price').innerText = p.price;
+            document.getElementById('modal-area').innerText = p.area;
+            document.getElementById('modal-desc').innerText = p.desc;
+            
+            const featuresHTML = p.features.map(f => `<li class="flex items-center"><i data-lucide="check" class="w-3 h-3 text-gold mr-2"></i>${f}</li>`).join('');
+            document.getElementById('modal-features').innerHTML = featuresHTML;
+            
+            const message = encodeURIComponent(`Hello AAHIL PROPERTY, I am interested in "${p.title}" located at ${p.location} priced at ${p.price}. Please provide more details.`);
+            document.getElementById('modal-whatsapp-btn').href = `https://wa.me/919300999990?text=${message}`;
+            
+            lucide.createIcons();
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Small delay to allow display flex to apply before opacity transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Contact Form to WhatsApp
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const type = document.getElementById('form-type').value;
+            const budget = document.getElementById('form-budget').value;
+            const msg = document.getElementById('form-message').value;
+            
+            const waText = `*New Enquiry from Website*%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Requirement:* ${type}%0A*Budget:* ${budget}%0A*Message/Location:* ${msg}`;
+            window.open(`https://wa.me/919300999990?text=${waText}`, '_blank');
+        });
+
+        // Testimonial Slider
+        let currentSlide = 0;
+        const slider = document.getElementById('testimonial-slider');
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach(d => {
+                d.classList.remove('bg-gold');
+                d.classList.add('bg-white/20');
+            });
+            dots[index].classList.remove('bg-white/20');
+            dots[index].classList.add('bg-gold');
+        }
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.getAttribute('data-index')));
+            });
+        });
+        
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % 3;
+            goToSlide(currentSlide);
+        }, 5000);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let menuOpen = false;
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if(menuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-8 h-8"></i>';
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+            }
+            lucide.createIcons();
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuOpen = false;
+                mobileMenu.classList.add('translate-x-full');
+                mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-8 h-8"></i>';
+                lucide.createIcons();
+            });
+        });
+
+        // Smooth Scroll to Top
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ==========================================
+        // GSAP & LENIS SETUP (THE CINEMATIC CORE)
+        // ==========================================
+        
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // Initialize Lenis
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        
+        // Sync Lenis with ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                navbar.classList.remove('py-6');
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.classList.add('py-6');
+            }
+        });
+
+        // --- Loader Animation ---
+        window.addEventListener('load', () => {
+            let progress = 0;
+            const progressEl = document.getElementById('loader-progress');
+            
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 5;
+                if(progress > 100) progress = 100;
+                progressEl.innerText = progress + '%';
+                
+                if(progress === 100) {
+                    clearInterval(interval);
+                    startIntro();
+                }
+            }, 100);
+        });
+
+        function startIntro() {
+            const tl = gsap.timeline();
+            
+            // Text animate out
+            tl.to('.loader-text span', {
+                y: '-100%',
+                stagger: 0.05,
+                duration: 0.6,
+                ease: "power3.in"
+            }, "+=0.2")
+            .to('.loader-progress', { opacity: 0, duration: 0.3 }, "<")
+            // Loader slide up
+            .to('#loader', {
+                yPercent: -100,
+                duration: 1,
+                ease: "power4.inOut"
+            })
+            // Hero texts reveal
+            .to('.hero-text, .hero-title, .hero-desc', {
+                y: '0%',
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "power4.out"
+            }, "-=0.5")
+            .to('.hero-buttons', {
+                opacity: 1,
+                duration: 1,
+                ease: "power2.out"
+            }, "-=0.5");
+        }
+
+        // --- Hero Parallax ---
+        gsap.to('.hero-bg img', {
+            yPercent: 30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#home",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // --- Intro Typography Reveal ---
+        const introLines = gsap.utils.toArray('.intro-line');
+        introLines.forEach((line) => {
+            gsap.to(line, {
+                y: '0%',
+                ease: "power4.out",
+                duration: 1.5,
+                scrollTrigger: {
+                    trigger: line.closest('.reveal-wrap'),
+                    start: "top 90%",
+                }
+            });
+        });
+
+        // --- About Section Image Reveal ---
+        gsap.from('.about-img', {
+            scale: 1.3,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".about-img-wrap",
+                start: "top 80%",
+            }
+        });
+
+        // --- Horizontal Scroll Section (Desktop Only) ---
+        ScrollTrigger.matchMedia({
+            // Desktop
+            "(min-width: 769px)": function() {
+                let sections = gsap.utils.toArray(".horizontal-panel");
+                let container = document.querySelector(".horizontal-scroll-wrapper");
+                
+                gsap.to(sections, {
+                    xPercent: -100 * (sections.length - 1),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: container,
+                        pin: true,
+                        scrub: 1,
+                        snap: 1 / (sections.length - 1),
+                        end: () => "+=" + document.querySelector(".horizontal-container").offsetWidth
+                    }
+                });
+            }
+        });
+
+        // --- Process Line Animation ---
+        gsap.to('#process-line', {
+            width: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".process-steps",
+                start: "top 70%",
+                end: "right right", // rough mapping
+                scrub: true
+            }
+        });
+        
+        // Mobile Process Line vertical
+        ScrollTrigger.matchMedia({
+            "(max-width: 768px)": function() {
+                gsap.to('#process-line', {
+                    height: "100%",
+                    width: "2px",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".process-steps",
+                        start: "top 60%",
+                        end: "bottom 60%",
+                        scrub: true
+                    }
+                });
+            }
+        });
+
+        // Step Circles Highlight
+        const stepCircles = gsap.utils.toArray('.step-circle');
+        stepCircles.forEach((circle, i) => {
+            gsap.to(circle, {
+                borderColor: "#d4af37",
+                color: "#d4af37",
+                scrollTrigger: {
+                    trigger: circle,
+                    start: "top 60%",
+                    toggleClass: "active",
+                }
+            });
+        });
+
+        // --- Counters Animation ---
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            let target = +counter.getAttribute('data-target');
+            
+            ScrollTrigger.create({
+                trigger: counter,
+                start: "top 85%",
+                once: true,
+                onEnter: () => {
+                    gsap.to(counter, {
+                        innerHTML: target,
+                        duration: 2,
+                        snap: { innerHTML: 1 },
+                        ease: "power2.out",
+                        onUpdate: function() {
+                            counter.innerHTML = Math.round(counter.innerHTML);
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
